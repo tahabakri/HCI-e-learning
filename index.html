@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button id="toggle-view-btn">Show Un-optimized Version</button>
+    
+    <div class="dashboard-container">
+        <nav class="sidebar">
+            <div class="logo-section">
+                <div class="logo">S</div>
+                <span>logo</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#" class="active">Dashboard</a></li>
+                <li><a href="#">Inbox</a></li>
+                <li><a href="#">Lesson</a></li>
+                <li><a href="#">Task</a></li>
+                <li><a href="#">Group</a></li>
+            </ul>
+            <ul class="nav-menu bottom-menu">
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Log out</a></li>
+                <li><button id="dark-mode-toggle" class="dark-mode-btn">🌙 Dark Mode</button></li>
+            </ul>
+        </nav>
+        
+        <main class="main-content">
+            <div class="search-section">
+                <input type="text" placeholder="search" class="search-bar">
+            </div>
+            
+            <div class="course-overview">
+                <h2>Course Overview</h2>
+                <p>Recently accessed course</p>
+                <div class="recent-course-card">
+                    <h3>Introduction to Computer Science</h3>
+                    <p>Last accessed: 2 hours ago</p>
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <div class="subject-section">
+                    <h3>Subject List</h3>
+                    <ul id="subject-list"></ul>
+                </div>
+                
+                <div class="timeline-section">
+                    <h3>Timeline Calendar</h3>
+                    <div id="upcoming-events-simple" class="upcoming-events-simple"></div>
+                    <div id="calendar-filters" class="calendar-filters">
+                        <button id="filter-all" class="filter-btn filter-all active">
+                            <span class="filter-dot all-dot"></span>
+                            All (<span id="all-count">0</span>)
+                        </button>
+                        <button id="filter-assignments" class="filter-btn filter-assignments">
+                            <span class="filter-dot assignments-dot"></span>
+                            Assignments (<span id="assignments-count">0</span>)
+                        </button>
+                        <button id="filter-deadlines" class="filter-btn filter-deadlines">
+                            <span class="filter-dot deadlines-dot"></span>
+                            Deadlines (<span id="deadlines-count">0</span>)
+                        </button>
+                    </div>
+                    <button id="view-full-calendar-btn" class="view-full-calendar-btn">📅 View Full Calendar</button>
+                    <div id="timeline-events"></div>
+                    <div id="calendar-container" class="calendar-container" style="display: none;">
+                        <div class="calendar-header">
+                            <button id="prev-month" class="calendar-nav">&lt;</button>
+                            <span id="month-year"></span>
+                            <button id="next-month" class="calendar-nav">&gt;</button>
+                        </div>
+                        <div class="calendar-days-header" id="calendar-days-header"></div>
+                        <div class="calendar-grid" id="calendar-days"></div>
+                        <div id="selected-day-events" class="selected-day-events"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <aside class="right-sidebar">
+            <div class="profile-section card profile-card">
+                <h3>Profile</h3>
+                <div class="profile-links">
+                    <div class="link-row">
+                        <a href="#" id="notifications-link">Notifications</a>
+                        <span id="notification-badge">3</span>
+                    </div>
+                    <div class="link-row">
+                        <a href="https://mail.google.com/" id="profile-email-link" target="_blank" rel="noopener">E-mail</a>
+                        <span id="profile-random-email" class="profile-random-email" aria-hidden="true"></span>
+                        <a href="#" id="view-profile-link">View Profile</a>
+                    </div>
+                    <div id="notification-dropdown" class="notification-dropdown" style="display: none;"></div>
+                </div>
+            </div>
+            
+            <div class="professors-section card">
+                <h3>Professors Email</h3>
+                <ul id="professors-list"></ul>
+                <button id="see-all-btn" class="see-all-btn">see all</button>
+            </div>
+        </aside>
+    </div>
+    
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+    
+    <!-- Calendar Modal -->
+    <div id="calendar-modal" class="calendar-modal" style="display: none;">
+        <div class="calendar-modal-content">
+            <button class="calendar-modal-close" id="close-calendar-modal">&times;</button>
+            <div id="modal-calendar-container"></div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
